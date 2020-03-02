@@ -1,2 +1,3 @@
 rootProject.name='CleanArchitecture'
 include ':app'
+include ':core'

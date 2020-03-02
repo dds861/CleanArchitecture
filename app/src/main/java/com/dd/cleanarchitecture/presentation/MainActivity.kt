@@ -1,7 +1,8 @@
-package com.dd.cleanarchitecture
+package com.dd.cleanarchitecture.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.dd.cleanarchitecture.R
 
 class MainActivity : AppCompatActivity() {
 
