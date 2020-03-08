@@ -8,11 +8,11 @@
 
 
     <EditText
-        android:id="@+id/titleView"
+        android:id="@+id/etCategoryKey"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Title"
+        android:hint="Key"
         android:inputType="textPersonName"
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,19 +20,19 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/contentView"
+        android:id="@+id/etCategoryName"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:ems="10"
         android:gravity="top|left"
-        android:hint="Content"
+        android:hint="Name"
         android:inputType="textPersonName"
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleView" />
+        app:layout_constraintTop_toBottomOf="@+id/etCategoryKey" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/checkButton"
