@@ -1,9 +1,10 @@
-package com.dd.cleanarchitecture.framework
+package com.dd.cleanarchitecture.presentation.list
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import com.dd.cleanarchitecture.framework.RoomCategoryDataSource
+import com.dd.cleanarchitecture.framework.UseCases
 import com.dd.core.data.Category
 import com.dd.core.repository.CategoryRepository
 import com.dd.core.usecase.AddCategory
@@ -14,10 +15,14 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class CategoryViewModel(application: Application) : AndroidViewModel(application) {
+class ListViewModel(application: Application) : AndroidViewModel(application) {
     private val coroutineScope = CoroutineScope(Dispatchers.IO)
 
-    val repository = CategoryRepository(RoomCategoryDataSource(application))
+    val repository = CategoryRepository(
+        RoomCategoryDataSource(
+            application
+        )
+    )
 
     val useCases = UseCases(
         AddCategory(repository),
@@ -26,12 +31,13 @@ class CategoryViewModel(application: Application) : AndroidViewModel(application
         RemoveCategory(repository)
     )
 
-    val saved = MutableLiveData<Boolean>()
+    val categories = MutableLiveData<List<Category>>()
 
-    fun saveCategory(category: Category) {
+    fun getCategories() {
         coroutineScope.launch {
-            useCases.addCategory(category)
-            saved.postValue(true)
+            val categoriesList = useCases.getAllCategories()
+            categories.postValue(categoriesList)
         }
     }
+
 }

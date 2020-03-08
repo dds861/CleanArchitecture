@@ -7,21 +7,20 @@
 
     <fragment
         android:id="@+id/listFragment"
-        android:name="com.dd.cleanarchitecture.presentation.ListFragment"
+        android:name="com.dd.cleanarchitecture.presentation.list.ListFragment"
         android:label="fragment_list"
-        tools:layout="@layout/fragment_list" >
+        tools:layout="@layout/fragment_list">
         <action
             android:id="@+id/action_listFragment_to_categoryFragment"
             app:destination="@id/categoryFragment" />
     </fragment>
     <fragment
         android:id="@+id/categoryFragment"
-        android:name="com.dd.cleanarchitecture.presentation.CategoryFragment"
+        android:name="com.dd.cleanarchitecture.presentation.edit.CategoryFragment"
         android:label="fragment_category"
-        tools:layout="@layout/fragment_category" >
+        tools:layout="@layout/fragment_category">
         <argument
             android:name="categoryId"
-            app:argType="long"
-            android:defaultValue="0L" />
+            app:argType="long" />
     </fragment>
 </navigation>

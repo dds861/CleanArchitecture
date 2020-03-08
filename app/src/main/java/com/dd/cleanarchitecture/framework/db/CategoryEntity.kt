@@ -19,7 +19,7 @@ data class CategoryEntity(
 ) {
     companion object {
         fun fromCategory(category: Category) =
-            CategoryEntity(key = category.key, name = category.name)
+            CategoryEntity(key = category.key, name = category.name, id = category.id)
     }
 
     fun toCategory() = Category(id, key, name)

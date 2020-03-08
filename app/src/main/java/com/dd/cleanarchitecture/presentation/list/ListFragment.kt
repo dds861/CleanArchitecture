@@ -1,4 +1,4 @@
-package com.dd.cleanarchitecture.presentation
+package com.dd.cleanarchitecture.presentation.list
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,16 +10,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dd.cleanarchitecture.R
-import com.dd.cleanarchitecture.framework.CategoryViewModel
-import com.dd.cleanarchitecture.framework.ListViewModel
 import kotlinx.android.synthetic.main.fragment_list.*
 
-/**
- * A simple [Fragment] subclass.
- */
-class ListFragment : Fragment() {
+class ListFragment : Fragment(), ListAction {
 
-    private val categoriesListAdapter = CategoriesListAdapter(arrayListOf())
+    private val categoriesListAdapter =
+        CategoriesListAdapter(
+            arrayListOf(),
+            this
+        )
     private lateinit var viewModel: ListViewModel
 
     override fun onCreateView(
@@ -59,8 +58,13 @@ class ListFragment : Fragment() {
     }
 
     private fun goToCategoryDetails(id: Long = 0L) {
-        val action = ListFragmentDirections.actionListFragmentToCategoryFragment()
+        val action =
+            ListFragmentDirections.actionListFragmentToCategoryFragment(id)
         Navigation.findNavController(categoriesListView).navigate(action)
+    }
+
+    override fun onClick(id: Long) {
+        goToCategoryDetails(id)
     }
 
 }
